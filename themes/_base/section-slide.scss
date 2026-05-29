@@ -1,0 +1,28 @@
+section:is(.trans, .section-divider, .section-slide, .chapter, .divider, .break) {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: var(--space-3);
+  padding-inline: calc(var(--page-padding-x) * 0.8);
+  text-align: center;
+  background-image: none;
+  background-color: var(--color-primary);
+  color: var(--color-on-primary);
+}
+
+section:is(.trans, .section-divider, .section-slide, .chapter, .divider, .break) > * {
+  width: 100%;
+  margin-inline: auto;
+}
+
+section:is(.trans, .section-divider, .section-slide, .chapter, .divider, .break) :is(h1, h2, h3, h4) {
+  color: var(--color-on-primary);
+  text-align: center;
+}
+
+section.trans :is(h2, h3),
+section.section-divider :is(h1, h2, h3),
+section.section-slide :is(h1, h2, h3) {
+  font-size: 4rem;
+}

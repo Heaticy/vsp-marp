@@ -1,0 +1,44 @@
+@use "../_base/palette-contract" as contract;
+
+:root {
+  --font-family-display: "VSP Latin Modern Sans", "Noto Sans CJK SC", sans-serif;
+  --font-family-body: "VSP Latin Modern Roman", "Noto Serif CJK SC", serif;
+  --font-family-mono: "VSP Latin Modern Mono", "Noto Sans Mono CJK SC", monospace;
+  --font-family-accent: "VSP Latin Modern Sans", "Noto Sans CJK SC", sans-serif;
+  --color-primary: #f7d040;
+  --color-on-primary: #ffffff;
+  --color-bg: #fffdf5;
+  --color-surface: #ffffff;
+  --color-text: #2f2118;
+  --color-muted: #8c7a63;
+  --color-accent: #f7b91e;
+  --color-section-bg: #fff4c8;
+  --color-code-bg: #fff7de;
+  --color-code-text: #3a2a18;
+  --color-link: #8f5424;
+  --color-divider: #e3b24a;
+  --color-quote: rgba(247, 208, 64, 0.18);
+  --color-navbar-font: #6c5f5b;
+  --filter-logo: none;
+  --filter-bg: none;
+  --color-callout-blue: #62a2bd;
+  --color-callout-red: #db6f55;
+  --color-callout-green: #7da65e;
+  --color-callout-purple: #a078b3;
+  --color-callout-black: #5b4f45;
+  --color-callout-yellow: #f7d040;
+  --color-callout-body: #fff9e8;
+  --color-glass-bg: rgba(255, 255, 255, 0.88);
+  --color-glass-border: rgba(227, 178, 74, 0.32);
+  --color-syntax-comment: #6f8f42;
+  --color-syntax-string: #c5681f;
+  --color-syntax-number: #a77820;
+  --color-syntax-keyword: #2f7c83;
+  --color-syntax-symbol: #9d5436;
+  --color-syntax-variable: #b46685;
+  --color-syntax-builtin: #8564a5;
+  --color-prompt-input: #80a850;
+  --color-prompt-output: #dc7d42;
+  --color-inverted-bg: #fff9e8;
+  --color-inverted-text: #2f2118;
+}

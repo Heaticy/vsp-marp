@@ -1,0 +1,32 @@
+@auto-scaling true;
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+section {
+  width: 1280px;
+  height: 720px;
+  position: relative;
+  overflow: hidden;
+  padding: var(--page-padding-y) var(--page-padding-x);
+  background: var(--color-bg);
+  color: var(--color-text);
+}
+
+header,
+footer {
+  position: absolute;
+}
+
+strong,
+em,
+code {
+  font: inherit;
+}
+
+table {
+  border-collapse: collapse;
+}

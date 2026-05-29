@@ -1,0 +1,75 @@
+@use "./_tutorial-common";
+
+$asset-base: "https://heaticy-1310163554.cos.ap-shanghai.myqcloud.com/vsp-marp/assets/nailong";
+
+section:not(.trans, .cover_a, .cover_b, .cover_c, .cover_d, .cover_e, .lastpage) {
+  background-image: none;
+}
+
+section.fglass {
+  backdrop-filter: none;
+}
+
+section.cover_e::before {
+  position: absolute;
+  top: 0;
+  left: 80px;
+  z-index: 1;
+  width: 100px;
+  height: 100px;
+  background:
+    url("#{$asset-base}/nailong-hug.png") center 10px / 72% auto no-repeat,
+    var(--color-coverbg);
+  content: "";
+}
+
+section.cover_e::after {
+  content: "";
+}
+
+section.cover_e .speaker-meta::after {
+  position: fixed;
+  right: 24px;
+  bottom: -34px;
+  z-index: 1;
+  width: 360px;
+  height: 624px;
+  background: url("#{$asset-base}/nailong-wave.png") center / contain no-repeat;
+  content: "";
+}
+
+section.trans {
+  position: relative;
+  background: var(--color-bg);
+}
+
+section.trans::before {
+  position: absolute;
+  inset: 0;
+  background: url("#{$asset-base}/nailong-bg.png") center / cover no-repeat;
+  content: "";
+  opacity: 0.45;
+}
+
+section.trans > * {
+  position: relative;
+  z-index: 1;
+}
+
+section.trans h2,
+section.trans h3 {
+  color: #ffffff;
+  text-shadow:
+    0 3px 10px rgba(78, 54, 0, 0.45),
+    0 0 2px rgba(78, 54, 0, 0.85);
+}
+
+section.lastpage::before {
+  position: absolute;
+  right: 72px;
+  bottom: 104px;
+  width: 180px;
+  height: 270px;
+  background: url("#{$asset-base}/nailong-hug.png") center / contain no-repeat;
+  content: "";
+}

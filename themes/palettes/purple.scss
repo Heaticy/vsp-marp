@@ -1,0 +1,44 @@
+@use "../_base/palette-contract" as contract;
+
+:root {
+  --font-family-display: "VSP Latin Modern Sans", "Noto Sans CJK SC", sans-serif;
+  --font-family-body: "VSP Latin Modern Roman", "Noto Serif CJK SC", serif;
+  --font-family-mono: "VSP Latin Modern Mono", "Noto Sans Mono CJK SC", monospace;
+  --font-family-accent: "VSP Latin Modern Sans", "Noto Sans CJK SC", sans-serif;
+  --color-primary: #a060e8;
+  --color-on-primary: #ffffff;
+  --color-bg: #ffffff;
+  --color-surface: #ffffff;
+  --color-text: #0d2528;
+  --color-muted: #8c8c8c;
+  --color-accent: #a060e8;
+  --color-section-bg: #eadcfb;
+  --color-code-bg: #f5effd;
+  --color-code-text: #251433;
+  --color-link: #0d2528;
+  --color-divider: #53a7a0;
+  --color-quote: rgba(160, 96, 232, 0.1);
+  --color-navbar-font: rgb(95, 76, 112);
+  --filter-logo: none;
+  --filter-bg: none;
+  --color-callout-blue: rgb(129, 161, 193);
+  --color-callout-red: rgb(191, 97, 106);
+  --color-callout-green: rgb(172, 206, 141);
+  --color-callout-purple: #a060e8;
+  --color-callout-black: rgb(67, 76, 94);
+  --color-callout-yellow: rgb(236, 194, 11);
+  --color-callout-body: rgb(238, 230, 250);
+  --color-glass-bg: rgba(255, 255, 255, 0.86);
+  --color-glass-border: rgba(95, 76, 112, 0.14);
+  --color-syntax-comment: #28a828;
+  --color-syntax-string: #fd8f3f;
+  --color-syntax-number: rgb(158, 158, 62);
+  --color-syntax-keyword: #4d3ee8;
+  --color-syntax-symbol: #8f2fcc;
+  --color-syntax-variable: #fc5fa3;
+  --color-syntax-builtin: #960ab9;
+  --color-prompt-input: #99bb88;
+  --color-prompt-output: #ff9090;
+  --color-inverted-bg: #ffffff;
+  --color-inverted-text: #232629;
+}

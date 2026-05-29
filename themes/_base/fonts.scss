@@ -1,0 +1,71 @@
+@font-face {
+  font-family: "VSP Latin Modern Roman";
+  src:
+    local("Latin Modern Roman 10 Regular"),
+    local("Latin Modern Roman"),
+    local("LMRoman10-Regular"),
+    url("https://heaticy-1310163554.cos.ap-shanghai.myqcloud.com/vsp-marp/assets/fonts/latin-modern/lmroman10-regular.otf") format("opentype");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "VSP Latin Modern Roman";
+  src:
+    local("Latin Modern Roman 10 Bold"),
+    local("Latin Modern Roman Bold"),
+    local("LMRoman10-Bold"),
+    url("https://heaticy-1310163554.cos.ap-shanghai.myqcloud.com/vsp-marp/assets/fonts/latin-modern/lmroman10-bold.otf") format("opentype");
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "VSP Latin Modern Sans";
+  src:
+    local("Latin Modern Sans 10 Regular"),
+    local("Latin Modern Sans"),
+    local("LMSans10-Regular"),
+    url("https://heaticy-1310163554.cos.ap-shanghai.myqcloud.com/vsp-marp/assets/fonts/latin-modern/lmsans10-regular.otf") format("opentype");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "VSP Latin Modern Sans";
+  src:
+    local("Latin Modern Sans 10 Bold"),
+    local("Latin Modern Sans Bold"),
+    local("LMSans10-Bold"),
+    url("https://heaticy-1310163554.cos.ap-shanghai.myqcloud.com/vsp-marp/assets/fonts/latin-modern/lmsans10-bold.otf") format("opentype");
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "VSP Latin Modern Mono";
+  src:
+    local("Latin Modern Mono 10 Regular"),
+    local("Latin Modern Mono"),
+    local("LMMono10-Regular"),
+    url("https://heaticy-1310163554.cos.ap-shanghai.myqcloud.com/vsp-marp/assets/fonts/latin-modern/lmmono10-regular.otf") format("opentype");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "VSP Latin Modern Mono";
+  src:
+    local("Latin Modern Mono Light 10 Bold"),
+    local("Latin Modern Mono Light Bold"),
+    local("LMMonoLt10-Bold"),
+    url("https://heaticy-1310163554.cos.ap-shanghai.myqcloud.com/vsp-marp/assets/fonts/latin-modern/lmmonolt10-bold.otf") format("opentype");
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+}

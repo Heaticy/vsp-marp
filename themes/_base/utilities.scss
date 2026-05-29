@@ -1,0 +1,259 @@
+@mixin utility-grid($columns, $rows, $areas, $gap: 1rem) {
+  overflow: visible;
+  display: grid;
+  gap: $gap;
+  grid-template-columns: $columns;
+  grid-template-rows: $rows;
+  grid-template-areas: $areas;
+}
+
+@mixin utility-media-cell($area) {
+  grid-area: $area;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+section.cols-2 {
+  @include utility-grid(50% 50%, 10% 90%, "slideheading slideheading" "leftpanel rightpanel", 1.5rem);
+
+  :is(h2, h3) { grid-area: slideheading; }
+  .ldiv { grid-area: leftpanel; margin-top: -5%; }
+  .rdiv { grid-area: rightpanel; margin-top: -5%; }
+  .limg { @include utility-media-cell(leftpanel); margin-top: -5%; }
+  .rimg { @include utility-media-cell(rightpanel); margin-top: -5%; }
+}
+
+section.cols-3 {
+  @include utility-grid(1fr 1fr 1fr, 10% 90%, "slideheading slideheading slideheading" "leftpanel middlepanel rightpanel");
+
+  :is(h2, h3) { grid-area: slideheading; }
+  .ldiv { grid-area: leftpanel; margin-top: -5%; }
+  .mdiv { grid-area: middlepanel; margin-top: -5%; }
+  .rdiv { grid-area: rightpanel; margin-top: -5%; }
+  .limg { @include utility-media-cell(leftpanel); margin-top: -5%; }
+  .mimg { @include utility-media-cell(middlepanel); margin-top: -5%; }
+  .rimg { @include utility-media-cell(rightpanel); margin-top: -5%; }
+}
+
+section.cols-2-73,
+section.cols-2-64,
+section.cols-2-37,
+section.cols-2-46 {
+  @include utility-grid(1fr 1fr, 10% 90%, "slideheading slideheading" "leftpanel rightpanel");
+
+  :is(h2, h3) { grid-area: slideheading; }
+  .ldiv { grid-area: leftpanel; margin-top: -2%; }
+  .rdiv { grid-area: rightpanel; margin-top: -2%; }
+  .limg { @include utility-media-cell(leftpanel); margin-top: -2%; }
+  .rimg { @include utility-media-cell(rightpanel); margin-top: -2%; }
+}
+
+section.cols-2-73 { grid-template-columns: 70% 30%; }
+section.cols-2-64 { grid-template-columns: 60% 40%; }
+section.cols-2-37 { grid-template-columns: 30% 70%; }
+section.cols-2-46 { grid-template-columns: 40% 60%; }
+
+section.cols-2.right-fill,
+section.cols-2-73.right-fill,
+section.cols-2-64.right-fill,
+section.cols-2-37.right-fill,
+section.cols-2-46.right-fill {
+  grid-template-areas:
+    "leftpanel rightpanel"
+    "leftpanel rightpanel";
+
+  > :is(h2, h3) {
+    grid-area: leftpanel;
+    z-index: 2;
+    align-self: start;
+  }
+
+  > :is(.ldiv, .limg) {
+    padding-top: 5.5rem;
+  }
+
+  > .rdiv {
+    align-self: start;
+    padding-top: 0;
+  }
+
+  > .rimg {
+    align-self: stretch;
+    margin-top: 0;
+  }
+}
+
+section.rows-2 {
+  @include utility-grid(100%, 7% 45% 45%, "slideheading" "toppanel" "bottompanel");
+
+  :is(h2, h3) { grid-area: slideheading; }
+  .tdiv { grid-area: toppanel; }
+  .bdiv { grid-area: bottompanel; }
+  .timg { @include utility-media-cell(toppanel); }
+  .bimg { @include utility-media-cell(bottompanel); }
+}
+
+section.pin-3 {
+  @include utility-grid(50% 50%, 7% 42% 48%, "slideheading slideheading" "toppanel toppanel" "leftpanel rightpanel");
+
+  :is(h2, h3) { grid-area: slideheading; }
+  .tdiv { grid-area: toppanel; }
+  .ldiv { grid-area: leftpanel; }
+  .rdiv { grid-area: rightpanel; }
+  .timg { @include utility-media-cell(toppanel); }
+  .limg { @include utility-media-cell(leftpanel); }
+  .rimg { @include utility-media-cell(rightpanel); }
+}
+
+@mixin list-card-shell {
+  list-style: none;
+  margin: 0;
+  padding: 20px 20px 20px 60px;
+  line-height: 180%;
+}
+
+@mixin ordered-marker($counter, $size, $rounded) {
+  counter-increment: #{$counter};
+
+  &::before {
+    content: counter(#{$counter});
+    display: inline-flex;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    width: $size;
+    height: $size;
+    margin-right: 20px;
+    margin-left: -8%;
+    background-color: var(--color-primary);
+    color: var(--color-on-primary);
+    font-family: var(--font-family-display);
+    font-size: 20px;
+    line-height: 1;
+    @if $rounded {
+      border-radius: 50%;
+    }
+  }
+}
+
+@mixin unordered-marker($rounded) {
+  display: block;
+  position: relative;
+  list-style: none;
+
+  &::before {
+    content: "";
+    display: inline-flex;
+    position: absolute;
+    top: 1.2em;
+    left: -30px;
+    margin-top: -0.9em;
+    align-items: center;
+    justify-content: center;
+    width: 10px;
+    height: 10px;
+    background-color: var(--color-primary);
+    font-family: var(--font-family-display);
+    @if $rounded {
+      border-radius: 50%;
+    }
+  }
+}
+
+section.fglass {
+  ul,
+  ol {
+    @include list-card-shell;
+    border-top: var(--border-thick) solid var(--color-navbar-font);
+    border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+    background: var(--color-glass-bg);
+    border-inline: 1px solid var(--color-glass-border);
+    border-bottom: 1px solid var(--color-glass-border);
+    box-shadow: 0 8px 24px var(--color-shadow);
+  }
+}
+
+section:is(.col1_ol_sq, .col1_ul_sq) {
+  > ul,
+  > ol {
+    @include list-card-shell;
+  }
+
+  li {
+    @include ordered-marker(col1_ol_sq, 27px, false);
+  }
+}
+
+section:is(.col1_ol_ci, .col1_ul_ci) {
+  > ul,
+  > ol {
+    @include list-card-shell;
+  }
+
+  li {
+    @include ordered-marker(col1_ol_ci, 27px, true);
+  }
+}
+
+section.cols2_ol_sq,
+section.cols2_ol_ci,
+section.cols2_ul_sq,
+section.cols2_ul_ci {
+  ul,
+  ol {
+    @include list-card-shell;
+    display: grid;
+    width: 98%;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 3em;
+    row-gap: 0.7em;
+    align-items: start;
+  }
+}
+
+section.cols2_ol_sq li {
+  @include ordered-marker(cols2_ol_sq, 30px, false);
+}
+
+section.cols2_ol_ci li {
+  @include ordered-marker(cols2_ol_ci, 30px, true);
+}
+
+section.cols2_ul_sq li {
+  @include unordered-marker(false);
+}
+
+section.cols2_ul_ci li {
+  @include unordered-marker(true);
+}
+
+section:is(.bq-blue, .bq-red, .bq-green, .bq-purple, .bq-black, .bq-yellow) blockquote {
+  overflow: hidden;
+  padding: 0;
+}
+
+section:is(.bq-blue, .bq-red, .bq-green, .bq-purple, .bq-black, .bq-yellow) blockquote > p {
+  margin: 0;
+}
+
+section:is(.bq-blue, .bq-red, .bq-green, .bq-purple, .bq-black, .bq-yellow) blockquote > p:first-child {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+section:is(.bq-blue, .bq-red, .bq-green, .bq-purple, .bq-black, .bq-yellow) blockquote > p:not(:first-child) {
+  padding: 1% 2%;
+}
+
+section :is(h1, h2, h3, h4, h5, h6) code {
+  color: inherit;
+  font-size: inherit;
+  line-height: inherit;
+}
+
+footer,
+section.navbar header {
+  align-items: center;
+}

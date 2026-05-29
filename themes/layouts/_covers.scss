@@ -1,0 +1,222 @@
+section.cover_a,
+section.cover_b,
+section.cover_c,
+section.cover_d,
+section.cover_e {
+  overflow: hidden;
+}
+
+section.cover_a {
+  display: grid;
+  grid-template-rows: auto auto 1fr auto;
+  align-content: start;
+  padding-top: 150px;
+}
+
+section.cover_a h1,
+section.cover_a h6,
+section.cover_a p {
+  position: relative;
+  top: auto;
+  bottom: auto;
+  width: auto;
+  transform: none;
+}
+
+section.cover_a h1 {
+  margin-inline: 5%;
+  padding: 0 80px;
+}
+
+section.cover_a h6 {
+  margin-inline: 5%;
+  padding: 0 80px;
+}
+
+section.cover_a p {
+  margin-top: auto;
+  text-align: center;
+}
+
+section.cover_b {
+  display: grid;
+  grid-template-rows: auto auto 1fr auto;
+  align-content: start;
+  padding-top: 108px;
+}
+
+section.cover_b h1,
+section.cover_b h6,
+section.cover_b p,
+section.cover_b .speaker-meta {
+  position: relative;
+  top: auto;
+  bottom: auto;
+  left: auto;
+  right: auto;
+  width: auto;
+  height: auto;
+  transform: none;
+}
+
+section.cover_b h1 {
+  margin-inline: 5%;
+  margin-bottom: 0;
+  padding: 28px 40px 10px;
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+}
+
+section.cover_b h6 {
+  margin-inline: 5%;
+  padding: 12px 40px 28px;
+  border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+}
+
+section.cover_b p {
+  margin-top: auto;
+  text-align: center;
+}
+
+section.cover_b .speaker-meta {
+  justify-self: center;
+  align-self: start;
+  margin-top: 24px;
+  color: var(--color-text);
+  font-family: var(--font-family-display);
+  font-size: 28px;
+  line-height: 1.38;
+  text-align: left;
+}
+
+section.cover_b .speaker-meta span {
+  display: inline-block;
+  min-width: 104px;
+  margin-right: 14px;
+  padding: 4px 12px;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--color-accent), transparent 84%);
+  color: var(--color-accent);
+  font-family: var(--font-family-accent);
+  font-size: 0.62em;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+section.cover_b .speaker-meta small {
+  display: block;
+  margin: 4px 0 16px 118px;
+  color: var(--color-muted);
+  font-size: 0.86em;
+}
+
+section.cover_c,
+section.cover_d {
+  display: grid;
+  grid-template-rows: auto auto 1fr auto;
+  align-content: start;
+}
+
+section.cover_c h1,
+section.cover_c h6,
+section.cover_c p,
+section.cover_d h1,
+section.cover_d h6,
+section.cover_d p {
+  position: relative;
+  bottom: auto;
+  transform: none;
+}
+
+section.cover_e {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 26%;
+  grid-template-rows: auto auto 1fr auto;
+  align-content: start;
+  padding-top: 138px;
+}
+
+section.cover_e::before {
+  pointer-events: none;
+  z-index: 0;
+}
+
+section.cover_e h1,
+section.cover_e h6,
+section.cover_e p,
+section.cover_e .speaker-meta {
+  position: relative;
+  z-index: 1;
+  grid-column: 1;
+  top: auto;
+  bottom: auto;
+  width: auto;
+  transform: none;
+}
+
+section.cover_e h1 {
+  margin-bottom: 8px;
+}
+
+section.cover_e h6 {
+  margin-bottom: 0;
+}
+
+section.cover_e p {
+  margin-top: auto;
+}
+
+section.cover_e .speaker-meta {
+  align-self: end;
+  margin-top: auto;
+  color: var(--color-text);
+  font-family: var(--font-family-display);
+  font-size: 28px;
+  line-height: 1.38;
+}
+
+section.cover_e .speaker-meta span {
+  display: inline-block;
+  min-width: 104px;
+  margin-right: 14px;
+  padding: 4px 12px;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--color-accent), transparent 84%);
+  color: var(--color-accent);
+  font-family: var(--font-family-accent);
+  font-size: 0.62em;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+section.cover_e .speaker-meta small {
+  display: block;
+  margin: 4px 0 16px 118px;
+  color: var(--color-muted);
+  font-size: 0.86em;
+}
+
+section.cover_e a::after {
+  content: "";
+}
+
+
+section.lastpage div > ul,
+section.lastpage .ending-cols3 {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 5em;
+  list-style: none;
+  align-content: center;
+  width: 100%;
+}
+
+section.lastpage div > ul > li,
+section.lastpage .ending-cols3 > li {
+  list-style: none;
+  align-content: start;
+}
+
+section.lastpage div > ul > li > ul > li {
+  list-style: none;
+  margin-left: -120px;
+}

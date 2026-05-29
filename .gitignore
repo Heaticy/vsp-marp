@@ -1,0 +1,17 @@
+node_modules/
+/tmp/
+.marp-cache/
+secret.yaml
+shared-assets/fonts/noto/
+/*.pdf
+*.log
+review/_tmp_render/
+previews/
+templates/*.html
+templates/*.pdf
+templates/*.png
+practice/**/*-flat.md
+image.png
+.DS_Store
+Thumbs.db
+.idea/

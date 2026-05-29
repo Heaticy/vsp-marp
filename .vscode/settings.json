@@ -1,0 +1,10 @@
+{
+  "markdown.marp.html": "all",
+  "markdown.marp.themes": [
+    "https://heaticy-1310163554.cos.ap-shanghai.myqcloud.com/vsp-marp/themes/tutorial-red.css",
+    "https://heaticy-1310163554.cos.ap-shanghai.myqcloud.com/vsp-marp/themes/tutorial-red-shtu.css",
+    "https://heaticy-1310163554.cos.ap-shanghai.myqcloud.com/vsp-marp/themes/tutorial-purple.css",
+    "https://heaticy-1310163554.cos.ap-shanghai.myqcloud.com/vsp-marp/themes/report.css",
+    "https://heaticy-1310163554.cos.ap-shanghai.myqcloud.com/vsp-marp/themes/tutorial-nailong.css"
+  ]
+}

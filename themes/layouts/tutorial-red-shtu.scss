@@ -1,0 +1,77 @@
+@use "./tutorial";
+
+$asset-base: "https://heaticy-1310163554.cos.ap-shanghai.myqcloud.com/vsp-marp/assets";
+
+section:not(.trans, .cover_a, .cover_b, .cover_c, .cover_d, .cover_e, .lastpage) {
+  background-image: url("#{$asset-base}/backgrounds/shanghaitech-master.png");
+  background-size: 100% 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+section.cover_e::before {
+  position: absolute;
+  top: 0;
+  left: 80px;
+  z-index: 1;
+  width: 100px;
+  height: 100px;
+  background:
+    url("#{$asset-base}/logos/ShanghaiTech_Logo_RGBA.png") center / 90% auto no-repeat,
+    var(--color-coverbg);
+  content: "";
+}
+
+section.cover_e::after {
+  content: "";
+}
+
+section.cover_e .speaker-meta::after {
+  position: fixed;
+  right: 24px;
+  bottom: 0;
+  z-index: 1;
+  width: 360px;
+  height: 120px;
+  background: url("#{$asset-base}/logos/ShanghaiTech_Name_RGBA.png") center / contain no-repeat;
+  content: "";
+}
+
+section.toc_b {
+  position: relative;
+  background-image:
+    linear-gradient(to right, transparent 0 6%, var(--color-coverbg) 6% 30%, transparent 30%),
+    url("#{$asset-base}/backgrounds/shanghaitech-master.png");
+  background-size:
+    100% 100%,
+    100% 100%;
+  background-position:
+    center,
+    center;
+  background-repeat:
+    no-repeat,
+    no-repeat;
+}
+
+section.toc_b::before {
+  content: none;
+}
+
+section.toc_b header,
+section.toc_b > ul,
+section.toc_b > ol {
+  z-index: 1;
+}
+
+section.toc_b header {
+  color: var(--color-on-primary);
+}
+
+section.toc_b header::after {
+  display: block;
+  width: 170px;
+  height: 170px;
+  margin: 14px auto 0;
+  background: url("#{$asset-base}/logos/ShanghaiTech_Logo_RGBA.png") center / contain no-repeat;
+  content: "";
+}

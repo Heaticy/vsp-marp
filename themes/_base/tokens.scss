@@ -1,0 +1,30 @@
+:root {
+  --font-family-main: var(--font-family-body);
+  --font-family-title: var(--font-family-display);
+  --font-family-footer: var(--font-family-accent);
+  --font-family-code: var(--font-family-mono);
+
+  --font-size-display: 55px;
+  --font-size-subtitle: 42px;
+  --font-size-heading: 38px;
+  --font-size-subheading: 30px;
+  --font-size-body: 25px;
+  --font-size-footer: 22px;
+  --font-size-page: 12px;
+  --font-size-code: 20px;
+
+  --space-1: 8px;
+  --space-2: 16px;
+  --space-3: 24px;
+  --space-4: 32px;
+  --space-5: 40px;
+
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 20px;
+
+  --border-strong: 3px;
+  --border-thick: 8px;
+  --page-padding-x: 70px;
+  --page-padding-y: 70px;
+}

@@ -1,0 +1,100 @@
+// Required palette contract variables:
+// --color-primary: dominant brand/background color
+// --color-on-primary: readable text on primary blocks
+// --color-bg: default page background
+// --color-surface: cards / raised surfaces / white panels
+// --color-text: primary body text
+// --color-muted: secondary text / footer text
+// --color-accent: strong accent for headings and markers
+// --color-section-bg: sectional or alternate surface fill
+// --color-code-bg: inline/code block background
+// --color-code-text: code foreground
+// --color-link: links
+// --color-divider: borders, separators, soft strokes
+// --color-quote: standard blockquote background
+// --color-navbar-font: navbar text color
+// --filter-logo: legacy logo filter hook, defaults to no filter
+// --filter-bg: legacy decorative image filter hook, defaults to no filter
+// --font-family-display: display and heading font stack
+// --font-family-body: primary body font stack
+// --font-family-mono: code font stack
+// --font-family-accent: footer / decorative accent font stack
+// --color-callout-blue: blue callout header background
+// --color-callout-red: red callout header background
+// --color-callout-green: green callout header background
+// --color-callout-purple: purple callout header background
+// --color-callout-black: black callout header background
+// --color-callout-yellow: yellow callout header background
+// --color-callout-body: callout body background
+// --color-glass-bg: frosted glass surface background
+// --color-glass-border: frosted glass border color
+// --color-syntax-comment: code comment color
+// --color-syntax-string: code string color
+// --color-syntax-number: code number color
+// --color-syntax-keyword: code keyword color
+// --color-syntax-symbol: code symbol color
+// --color-syntax-variable: code variable color
+// --color-syntax-builtin: code builtin color
+// --color-prompt-input: terminal/input prompt color
+// --color-prompt-output: terminal/output prompt color
+// --color-inverted-bg: inverted block background
+// --color-inverted-text: inverted block foreground
+
+:root {
+  --color-primary: AccentColor;
+  --color-on-primary: AccentColorText;
+  --color-bg: Canvas;
+  --color-surface: Canvas;
+  --color-text: CanvasText;
+  --color-muted: color-mix(in srgb, CanvasText 55%, Canvas);
+  --color-accent: LinkText;
+  --color-section-bg: color-mix(in srgb, Canvas 88%, AccentColor);
+  --color-code-bg: color-mix(in srgb, Canvas 92%, AccentColor);
+  --color-code-text: CanvasText;
+  --color-link: LinkText;
+  --color-divider: color-mix(in srgb, CanvasText 18%, transparent);
+  --color-quote: color-mix(in srgb, var(--color-section-bg) 75%, var(--color-surface));
+  --color-navbar-font: color-mix(in srgb, CanvasText 65%, Canvas);
+  --filter-logo: none;
+  --filter-bg: none;
+  --font-family-display: "Comic Sans MS", "Papyrus", serif;
+  --font-family-body: "Times New Roman", serif;
+  --font-family-mono: "Courier New", monospace;
+  --font-family-accent: "Brush Script MT", cursive;
+  --color-callout-blue: color-mix(in srgb, var(--color-surface) 35%, var(--color-accent));
+  --color-callout-red: color-mix(in srgb, var(--color-primary) 70%, var(--color-accent));
+  --color-callout-green: color-mix(in srgb, var(--color-section-bg) 65%, var(--color-accent));
+  --color-callout-purple: color-mix(in srgb, var(--color-primary) 45%, var(--color-link));
+  --color-callout-black: color-mix(in srgb, var(--color-text) 80%, var(--color-muted));
+  --color-callout-yellow: color-mix(in srgb, var(--color-primary) 60%, var(--color-accent));
+  --color-callout-body: color-mix(in srgb, var(--color-surface) 80%, var(--color-section-bg));
+  --color-glass-bg: color-mix(in srgb, var(--color-surface) 85%, transparent);
+  --color-glass-border: color-mix(in srgb, var(--color-text) 12%, transparent);
+  --color-syntax-comment: color-mix(in srgb, var(--color-text) 55%, var(--color-accent));
+  --color-syntax-string: color-mix(in srgb, var(--color-accent) 65%, var(--color-primary));
+  --color-syntax-number: color-mix(in srgb, var(--color-accent) 45%, var(--color-text));
+  --color-syntax-keyword: var(--color-link);
+  --color-syntax-symbol: color-mix(in srgb, var(--color-primary) 80%, var(--color-text));
+  --color-syntax-variable: color-mix(in srgb, var(--color-link) 75%, var(--color-primary));
+  --color-syntax-builtin: color-mix(in srgb, var(--color-link) 75%, var(--color-text));
+  --color-prompt-input: color-mix(in srgb, var(--color-accent) 60%, var(--color-surface));
+  --color-prompt-output: color-mix(in srgb, var(--color-primary) 65%, var(--color-surface));
+  --color-inverted-bg: var(--color-surface);
+  --color-inverted-text: var(--color-text);
+
+  // Legacy aliases kept so most old layout rules can survive the split.
+  --color-coverbg: var(--color-primary);
+  --color-title: var(--color-on-primary);
+  --color-main: var(--color-text);
+  --color-much: var(--color-accent);
+  --color-footer: var(--color-muted);
+  --color-navbar-bg: var(--color-section-bg);
+  --color-trans: var(--color-primary);
+  --color-few: var(--color-divider);
+
+  --color-shadow: color-mix(in srgb, var(--color-text) 14%, transparent);
+
+  --filter-b: var(--filter-logo);
+  --filter-c: var(--filter-bg);
+  --filter-e: var(--filter-logo);
+}

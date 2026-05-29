@@ -1,0 +1,31 @@
+{
+  "name": "vsp-marp",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build:themes": "node --import tsx scripts/build-themes.ts",
+    "render": "node --import tsx scripts/render.ts",
+    "sync:cos": "node --import tsx scripts/sync-cos.ts",
+    "prepare": "node --import tsx scripts/build-themes.ts",
+    "build": "node --import tsx scripts/build-themes.ts",
+    "check": "node --import tsx scripts/build-themes.ts"
+  },
+  "exports": {
+    "./marp.config": "./marp.config.mjs",
+    "./marp.config.mjs": "./marp.config.mjs",
+    "./dist/themes/*": "./dist/themes/*"
+  },
+  "files": [
+    "dist/themes",
+    "marp.config.mjs",
+    "README.md"
+  ],
+  "devDependencies": {
+    "@marp-team/marp-cli": "^4.3.1",
+    "cos-nodejs-sdk-v5": "^2.14.7",
+    "sass": "^1.99.0",
+    "sharp": "^0.34.4",
+    "tsx": "^4.20.5"
+  }
+}
