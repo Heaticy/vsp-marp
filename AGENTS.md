@@ -20,6 +20,36 @@ VSP-Marp 是一个 Marp 主题和模板仓库。仓库会把 `themes/` 下的 SC
 - `scripts/`：主题构建、文稿渲染、COS 同步脚本。
 - `docs/DEVELOPMENT.md`：开发和发布说明。
 
+## Agent 渲染管线
+
+Agent 处理模板、主题、视觉素材或用户要求检查渲染结果时，必须使用仓库 CLI 渲染管线，不要绕过 `scripts/render.ts` 直接调用本地文件、VS Code 预览或手写 Marp 命令。
+
+CLI 渲染入口：
+
+```bash
+node --import tsx scripts/render.ts <input.md> [--theme <name>] [--pdf] [-o <output>]
+```
+
+管线行为：
+
+- 读取输入 Markdown。
+- 主题优先级为命令行 `--theme`、Markdown frontmatter `theme`、默认主题。
+- 按主题名从远端 COS 下载主题 CSS，并缓存到 `.marp-cache/themes/`。
+- 使用缓存后的主题 CSS 调用仓库内的 `@marp-team/marp-cli`。
+- 默认输出 HTML；加 `--pdf` 输出 PDF；`-o` 或 `--output` 指定产物路径。
+
+Agent 标准流程：
+
+1. 修改前确认受影响的 Markdown 模板、主题 SCSS 或素材。
+2. 修改主题或公开视觉素材后，先运行 `node --import tsx scripts/build-themes.ts`。
+3. 渲染 HTML 到 `/tmp`，用于浏览器检查，例如：
+   `node --import tsx scripts/render.ts templates/tutorial-red.md -o /tmp/tutorial-red.html`
+4. 涉及版式、分页、PDF 或最终确认时，再渲染完整 PDF 到 `/tmp`，例如：
+   `node --import tsx scripts/render.ts templates/tutorial-red.md --pdf -o /tmp/tutorial-red.pdf`
+5. 需要给用户确认的 PDF，再复制到仓库 `previews/` 目录。
+
+当用户明确要求“检查渲染内容”“看一下页面”“检查版式”“确认输出”或类似视觉验收时，Agent 必须用 Playwright 打开 CLI 生成的 HTML 产物进行观察；检查重点包括页面是否空白、主题是否加载、文字是否溢出或重叠、图片是否缺失或拉伸、分页和页眉页脚是否符合预期。必要时导出单页截图或全页截图辅助定位问题。
+
 ## 工作规则
 
 - 修改模板时保持范围收敛，保留 Marp frontmatter 和注释指令语法。

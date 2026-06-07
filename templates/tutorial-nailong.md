@@ -285,7 +285,7 @@ VSP-Marp 提供多种列表和提示框样式，适合教学展示使用。下�
 
 ---
 ## 3. Emphasis Styles
-<!-- _class: bq-yellow -->
+<!-- _class: bq -->
 
 > 强调引用
 >

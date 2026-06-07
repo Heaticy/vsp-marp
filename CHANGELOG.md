@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## v0.1.1 - Report Variants
+
+- added `report-red` and `report-nailong` report theme variants
+- added a theme-colored `bq` callout style for templates
+- documented the agent CLI rendering workflow
+
 ## v0.1.0 - From Scratch
 
 - forked from `Hypo-Marp` into `VSP-Marp`

@@ -9,6 +9,8 @@ export const THEME_URLS = {
   "tutorial-red-shtu": `${COS_BASE_URL}/themes/tutorial-red-shtu.css`,
   "tutorial-purple": `${COS_BASE_URL}/themes/tutorial-purple.css`,
   "report": `${COS_BASE_URL}/themes/report.css`,
+  "report-red": `${COS_BASE_URL}/themes/report-red.css`,
+  "report-nailong": `${COS_BASE_URL}/themes/report-nailong.css`,
   "tutorial-nailong": `${COS_BASE_URL}/themes/tutorial-nailong.css`,
 } as const;
 

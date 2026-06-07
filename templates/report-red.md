@@ -1,19 +1,17 @@
 ---
 marp: true
-theme: tutorial-red
+theme: report-red
 size: 16:9
 ---
-<!-- _class: cover_e -->
-<!-- Optional cover header: _header: ![](https://heaticy-1310163554.cos.ap-shanghai.myqcloud.com/vsp-marp/assets/logos/ShanghaiTech_Logo_RGBA.png) -->
-<!-- Optional cover footer: _footer: ![](https://heaticy-1310163554.cos.ap-shanghai.myqcloud.com/vsp-marp/assets/logos/ShanghaiTech_Name_RGBA.png) -->
+<!-- _class: cover_b -->
 <!-- _paginate: "" -->
 
-# VSP-Marp Red
-###### for tutorials
+# ShanghaiTech VSP-Marp
+###### for reports
 
 <div class="speaker-meta">
 
-<span>Speaker</span> VSP-Marp Team  
+<span>Speaker</span> VSP-Marp Team
 <small>themes via Tencent COS</small>
 
 </div>
@@ -24,8 +22,6 @@ size: 16:9
 <!-- _class: trans -->
 <!-- _footer: "" -->
 <!-- _paginate: "" -->
-
-<!-- Optional page background: _backgroundImage: url("https://heaticy-1310163554.cos.ap-shanghai.myqcloud.com/vsp-marp/assets/backgrounds/shanghaitech-master.png") -->
 
 ---
 ## Contents
@@ -42,7 +38,7 @@ size: 16:9
 
 ---
 <!-- _class: toc_b -->
-<!-- _header: "Contents" -->
+<!-- _header: Contents ![](https://heaticy-1310163554.cos.ap-shanghai.myqcloud.com/vsp-marp/assets/logos/ShanghaiTech_Logo_RGBA.png) -->
 <!-- _footer: "" -->
 <!-- _paginate: "" -->
 
@@ -59,7 +55,6 @@ size: 16:9
 <!-- _paginate: "" -->
 
 ---
-
 ## 1. Slide Structure
 <!-- _class: fixedtitleA -->
 
@@ -110,14 +105,13 @@ size: 16:9
 
 <div class=rimg>
 
-<!-- You can replace this image with your own background or teaching image. -->
-![h:320px #c](https://heaticy-1310163554.cos.ap-shanghai.myqcloud.com/vsp-marp/assets/backgrounds/vortex-figure-18.png)
+<!-- You can replace this image with your own background or report image. -->
+![h:320px #c](https://heaticy-1310163554.cos.ap-shanghai.myqcloud.com/vsp-marp/assets/logos/ShanghaiTech_Logo_RGB.png)
 </div>
 
 ---
 ## 2. Right Fill Text
 <!-- _class: cols-2 right-fill right-fill-text -->
-<!-- _header: "" -->
 
 <div class=ldiv>
 
@@ -126,6 +120,7 @@ size: 16:9
 - 适合双栏文字对比
 - 左栏作为背景、问题或约束
 - 标题不会挤占右栏顶部
+
 </div>
 
 <div class=rdiv>
@@ -135,26 +130,28 @@ size: 16:9
 - 适合放方案、结论或对照项
 - 比普通双栏多一段可用高度
 - 不需要图片也能使用 `right-fill`
+
 </div>
 
 ---
 ## 2. Right Fill
 <!-- _class: cols-2-46 right-fill right-fill-text -->
-<!-- _header: "" -->
 
 <div class=ldiv>
 
 `right-fill` 用在图片更重要的页面。右侧图片从页面顶部开始占满右栏，左侧标题和正文都保留在左栏。
 
-- 适合人物图、产品图、实验场景图
+- 适合标志、产品图、实验场景图
 - 左侧只放结论或必要说明
 - 右侧图片不要被强行拉伸
+
 </div>
 
 <div class="rimg full-height">
 
 <!-- You can replace this image with your own figure; right-fill lets it use the title-side space. -->
-![h:650px #c](https://heaticy-1310163554.cos.ap-shanghai.myqcloud.com/vsp-marp/assets/nailong/nailong-wave.png)
+![h:560px #c](https://heaticy-1310163554.cos.ap-shanghai.myqcloud.com/vsp-marp/assets/logos/ShanghaiTech_Logo_RGB.png)
+
 </div>
 
 ---
@@ -186,7 +183,7 @@ size: 16:9
 
 <div class="rimg wide-figure">
 
-![h:400px #c](https://heaticy-1310163554.cos.ap-shanghai.myqcloud.com/vsp-marp/assets/backgrounds/vortex-figure-18.png)
+![h:420px #c](https://heaticy-1310163554.cos.ap-shanghai.myqcloud.com/vsp-marp/assets/logos/ShanghaiTech_Logo_RGB.png)
 
 </div>
 
@@ -238,7 +235,7 @@ size: 16:9
 ---
 ## 3. Emphasis Styles
 
-VSP-Marp 提供多种列表和提示框样式，适合教学展示使用。下面几页分别展示双列列表、单列流程、强调引用和代码块。
+VSP-Marp 提供多种列表和提示框样式，适合报告展示使用。下面几页分别展示双列列表、单列流程、强调引用和代码块。
 
 - `cols2_ol_sq` / `cols2_ol_ci`：双列有序列表
 - `cols2_ul_sq` / `cols2_ul_ci`：双列无序列表
@@ -282,7 +279,7 @@ VSP-Marp 提供多种列表和提示框样式，适合教学展示使用。下�
 
 > 强调引用
 >
-> 适合突出课堂提示、注意事项或阶段性结论。
+> 适合突出报告提示、关键假设或阶段性结论。
 
 ---
 ## 4. Code Examples: 代码块
@@ -328,7 +325,7 @@ app: main.o utils.o
 <div class="icons">
 
 - VSP-Marp
-- Tutorial Red
+- ShanghaiTech
 - COS theme assets
 
 </div>

@@ -1204,6 +1204,7 @@ section.cols-3 .mimg {
   grid-area: middlepanel;
 }
 
+section.bq blockquote,
 section.bq-blue blockquote,
 section.bq-red blockquote,
 section.bq-green blockquote,
@@ -1215,6 +1216,7 @@ section.bq-yellow blockquote {
   background-color: var(--color-surface);
 }
 
+section.bq blockquote > p::before,
 section.bq-blue blockquote > p::before,
 section.bq-red blockquote > p::before,
 section.bq-green blockquote > p::before,
@@ -1226,6 +1228,7 @@ section.bq-yellow blockquote > p::before {
   color: var(--color-on-primary);
 }
 
+section.bq blockquote > p:nth-child(1),
 section.bq-blue blockquote > p:nth-child(1),
 section.bq-red blockquote > p:nth-child(1),
 section.bq-green blockquote > p:nth-child(1),
@@ -1239,6 +1242,7 @@ section.bq-yellow blockquote > p:nth-child(1) {
   line-height: 2rem;
 }
 
+section.bq blockquote > p:not(:nth-child(1)),
 section.bq-blue blockquote > p:not(:nth-child(1)),
 section.bq-red blockquote > p:not(:nth-child(1)),
 section.bq-green blockquote > p:not(:nth-child(1)),
@@ -1247,6 +1251,10 @@ section.bq-black blockquote > p:not(:nth-child(1)),
 section.bq-yellow blockquote > p:not(:nth-child(1)) {
   padding: 1% 2%;
   background-color: var(--color-callout-body);
+}
+
+section.bq blockquote > p:nth-child(1) {
+  background-color: var(--color-primary);
 }
 
 section.bq-blue blockquote > p:nth-child(1) {
@@ -1273,6 +1281,10 @@ section.bq-yellow blockquote > p:nth-child(1) {
   background-color: var(--color-callout-yellow);
 }
 
+section.bq blockquote > p:nth-child(1)::before {
+  content: "\f0eb";
+}
+
 section.bq-blue blockquote > p:nth-child(1)::before {
   content: "\f518";
 }
@@ -1297,6 +1309,7 @@ section.bq-yellow blockquote > p:nth-child(1)::before {
   content: "!";
 }
 
+section.bq blockquote > p:nth-child(1)::before,
 section.bq-blue blockquote > p:nth-child(1)::before,
 section.bq-red blockquote > p:nth-child(1)::before,
 section.bq-green blockquote > p:nth-child(1)::before,
@@ -1931,22 +1944,22 @@ section.cols2_ul_ci li::before {
   border-radius: 50%;
 }
 
-section:is(.bq-blue, .bq-red, .bq-green, .bq-purple, .bq-black, .bq-yellow) blockquote {
+section:is(.bq, .bq-blue, .bq-red, .bq-green, .bq-purple, .bq-black, .bq-yellow) blockquote {
   overflow: hidden;
   padding: 0;
 }
 
-section:is(.bq-blue, .bq-red, .bq-green, .bq-purple, .bq-black, .bq-yellow) blockquote > p {
+section:is(.bq, .bq-blue, .bq-red, .bq-green, .bq-purple, .bq-black, .bq-yellow) blockquote > p {
   margin: 0;
 }
 
-section:is(.bq-blue, .bq-red, .bq-green, .bq-purple, .bq-black, .bq-yellow) blockquote > p:first-child {
+section:is(.bq, .bq-blue, .bq-red, .bq-green, .bq-purple, .bq-black, .bq-yellow) blockquote > p:first-child {
   display: flex;
   align-items: center;
   gap: 0.75rem;
 }
 
-section:is(.bq-blue, .bq-red, .bq-green, .bq-purple, .bq-black, .bq-yellow) blockquote > p:not(:first-child) {
+section:is(.bq, .bq-blue, .bq-red, .bq-green, .bq-purple, .bq-black, .bq-yellow) blockquote > p:not(:first-child) {
   padding: 1% 2%;
 }
 

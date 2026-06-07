@@ -27,7 +27,8 @@ size: 16:9
 https://heaticy-1310163554.cos.ap-shanghai.myqcloud.com/vsp-marp/themes/tutorial-red.css
 https://heaticy-1310163554.cos.ap-shanghai.myqcloud.com/vsp-marp/themes/tutorial-red-shtu.css
 https://heaticy-1310163554.cos.ap-shanghai.myqcloud.com/vsp-marp/themes/tutorial-purple.css
-https://heaticy-1310163554.cos.ap-shanghai.myqcloud.com/vsp-marp/themes/report.css
+https://heaticy-1310163554.cos.ap-shanghai.myqcloud.com/vsp-marp/themes/report-red.css
+https://heaticy-1310163554.cos.ap-shanghai.myqcloud.com/vsp-marp/themes/report-nailong.css
 https://heaticy-1310163554.cos.ap-shanghai.myqcloud.com/vsp-marp/themes/tutorial-nailong.css
 ```
 
@@ -91,7 +92,8 @@ Markdown 文件放在这个工作区里的任意位置都可以。
     "https://heaticy-1310163554.cos.ap-shanghai.myqcloud.com/vsp-marp/themes/tutorial-red.css",
     "https://heaticy-1310163554.cos.ap-shanghai.myqcloud.com/vsp-marp/themes/tutorial-red-shtu.css",
     "https://heaticy-1310163554.cos.ap-shanghai.myqcloud.com/vsp-marp/themes/tutorial-purple.css",
-    "https://heaticy-1310163554.cos.ap-shanghai.myqcloud.com/vsp-marp/themes/report.css",
+    "https://heaticy-1310163554.cos.ap-shanghai.myqcloud.com/vsp-marp/themes/report-red.css",
+    "https://heaticy-1310163554.cos.ap-shanghai.myqcloud.com/vsp-marp/themes/report-nailong.css",
     "https://heaticy-1310163554.cos.ap-shanghai.myqcloud.com/vsp-marp/themes/tutorial-nailong.css"
   ]
 }
