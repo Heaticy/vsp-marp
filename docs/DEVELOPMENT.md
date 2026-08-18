@@ -260,19 +260,20 @@ Left content
 
 | class | 用途 |
 | --- | --- |
+| `bq` | 跟随当前主题主色的默认强调引用，标准模板优先使用。 |
 | `bq-blue` | 蓝色提示框。 |
-| `bq-red` | 红色提示框，tutorial 模板示例使用。 |
+| `bq-red` | 显式红色提示框。 |
 | `bq-green` | 绿色提示框。 |
 | `bq-purple` | 紫色提示框。 |
 | `bq-black` | 黑色提示框。 |
-| `bq-yellow` | 黄色提示框，report 模板示例使用。 |
+| `bq-yellow` | 黄色警告或注意提示框。 |
 
 写法：
 
 ```markdown
 ---
 ## Note
-<!-- _class: bq-red -->
+<!-- _class: bq -->
 
 > Title
 >

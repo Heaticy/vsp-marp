@@ -15,12 +15,14 @@ export async function auditThemes() {
   const presetDir = path.join(repoRoot, "themes", "presets");
   const paletteDir = path.join(repoRoot, "themes", "palettes");
   const layoutDir = path.join(repoRoot, "themes", "layouts");
+  const templateDir = path.join(repoRoot, "templates");
   const distDir = path.join(repoRoot, "dist", "themes");
   const skillDir = path.join(repoRoot, "skills", "vsp-marp", "references");
 
   const presetFiles = await walkFiles(presetDir, file => file.endsWith(".scss"));
   const paletteFiles = await walkFiles(paletteDir, file => file.endsWith(".scss"));
   const layoutFiles = await walkFiles(layoutDir, file => file.endsWith(".scss"));
+  const templateFiles = await walkFiles(templateDir, file => file.endsWith(".md"));
   const distFiles = await walkFiles(distDir, file => file.endsWith(".css"));
   const expectedThemes = presetFiles.map(file => path.basename(file, ".scss")).sort();
   const builtThemes = distFiles.map(file => path.basename(file, ".css")).sort();
@@ -49,6 +51,14 @@ export async function auditThemes() {
   assert(!/(?:#[0-9a-fA-F]{3,8}\b|rgba?\()/.test(baseLayoutSource), "themes/_base/layouts.scss must not hardcode palette colors");
   const utilitySource = await fs.readFile(path.join(repoRoot, "themes", "_base", "utilities.scss"), "utf8");
   assert(!utilitySource.includes("section:is(.bq"), "Callout shell rules must stay encapsulated in themes/_base/layouts.scss");
+
+  for (const templateFile of templateFiles) {
+    const source = await fs.readFile(templateFile, "utf8");
+    assert(!/<!--\s*_class:[^>]*\bbq-(?:blue|red|green|purple|black|yellow)\b/.test(source), `${relative(templateFile)} hardcodes a callout color; use semantic class bq`);
+    assert(!/<style\b|\bstyle\s*=/.test(source), `${relative(templateFile)} contains inline CSS instead of a theme class`);
+    assert(!/(?:#[0-9a-fA-F]{3,8}\b|rgba?\()/.test(source), `${relative(templateFile)} hardcodes a color instead of using the theme palette`);
+    assert(source.includes("<!-- _class: bq -->"), `${relative(templateFile)} must demonstrate the semantic default callout`);
+  }
 
   for (const presetFile of presetFiles) {
     const source = await fs.readFile(presetFile, "utf8");
