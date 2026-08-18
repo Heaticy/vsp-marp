@@ -1,5 +1,33 @@
 # Development
 
+## Skill 开发与使用
+
+`skills/vsp-marp/SKILL.md` 遵循通用 Agent Skills 格式，主 Skill 通过相对路径按需加载 `skills/<capability>/SKILL.md`。因此，Codex、Pi 或其他支持 Agent Skills 的工具只要加载主目录即可使用，不要求宿主支持嵌套 Skill 自动发现。
+
+仓库提供两种宿主适配元数据：
+
+- `.codex-plugin/plugin.json`：Codex 插件仓库清单，指向根目录 `skills/`。
+- `package.json` 中的 `pi.skills`：Pi package 清单，同样指向根目录 `skills/`。
+
+Codex 可以加载整个插件仓库，也可以从 `${CODEX_HOME:-$HOME/.codex}/skills/vsp-marp` 链接到已克隆仓库中的 `skills/vsp-marp/`；使用链接可以保留 Skill 对仓库 CLI、主题和模板的访问。Pi 可在仓库根目录执行：
+
+```bash
+pi install .
+```
+
+本地 CLI 与所有 Agent 共用；截图审计需要额外安装 Playwright Chromium：
+
+```bash
+pnpm install
+pnpm exec playwright install chromium
+node --import tsx scripts/render.ts <input.md> -o /tmp/slides.html
+node --import tsx scripts/render.ts <input.md> --pdf -o /tmp/slides.pdf
+npm run audit:slides -- <input.md> -o /tmp/slides-audit.md
+npm run screenshot:slides -- /tmp/slides.html -o /tmp/slides-review
+```
+
+Skill 目录中的 `references/` 是独立分发所需的模板、主题和实践参考快照。仓库内开发时，以根目录的 `templates/`、`themes/`、`dist/themes/` 和 `practice/` 为准；更新相关内容后，应同步检查 Skill 快照是否需要更新。
+
 ## CLI 用法
 
 CLI 更适合自动化流程，例如 agent 连续生成 `html` / `pdf`，再根据结果继续调整内容和版式。普通用户如果只需要预览，优先用 VS Code 即可。
@@ -13,7 +41,7 @@ npm install --ignore-scripts
 渲染入口：
 
 ```bash
-node --import tsx scripts/render.ts <input.md> [--theme <name>] [--pdf] [-o output.html]
+node --import tsx scripts/render.ts <input.md> [--theme <name> | --theme-file <css>] [--allow-local-files] [--pdf] [-o output.html]
 ```
 
 输出规则：
@@ -32,7 +60,9 @@ node --import tsx scripts/render.ts templates/tutorial-red.md --pdf -o /tmp/tuto
 
 行为：
 
-- 优先读取命令行 `--theme`
+- `--theme-file` 直接使用本地构建后的 CSS，并与 `--theme` 互斥；用于主题开发和发布前审计
+- `--allow-local-files` 允许可信文稿读取本地图片等资源；默认关闭，不要对外部或不可信 Markdown 开启
+- 未指定 `--theme-file` 时，优先读取命令行 `--theme`
 - 否则读取 Markdown frontmatter 里的 `theme`
 - 否则回退到 `tutorial-red`
 - 按主题名从 COS 下载远程 CSS 到 `.marp-cache/themes/`
@@ -350,7 +380,7 @@ CI 会在 push、merge request、tag 和网页手动触发时创建流水线。�
 
 流水线包含：
 
-- `check`: 运行 `npm run check`，构建主题 CSS 作为标准检查。
+- `check`: 运行 `npm run check`，构建主题 CSS，并审计 preset/palette 结构、CSS 变量闭合、本机路径、画布尺寸、默认 report 红色和 Skill 快照一致性。
 - `build`: 运行 `npm run build`，并保存 `dist/` 作为一周有效的 artifact。
 
 ## 发布到 COS

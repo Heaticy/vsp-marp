@@ -136,7 +136,7 @@ pre {
   padding: 28px;
   border: 1px solid var(--color-divider);
   border-radius: var(--radius-md);
-  background: rgba(174, 58, 68, 0.04);
+  background: color-mix(in srgb, var(--color-primary) 4%, var(--color-surface));
   text-align: left;
   line-height: 1.15;
 }
@@ -1066,7 +1066,8 @@ section.bq-green blockquote,
 section.bq-purple blockquote,
 section.bq-black blockquote,
 section.bq-yellow blockquote {
-  padding: 1%;
+  overflow: hidden;
+  padding: 0;
   border-left: none;
   background-color: var(--color-surface);
 }
@@ -1090,6 +1091,10 @@ section.bq-green blockquote > p:nth-child(1),
 section.bq-purple blockquote > p:nth-child(1),
 section.bq-black blockquote > p:nth-child(1),
 section.bq-yellow blockquote > p:nth-child(1) {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin: 0;
   margin-bottom: -1px;
   padding: 0.5% 0.5% 0.5% 1.5%;
   color: var(--color-on-primary);
@@ -1104,6 +1109,7 @@ section.bq-green blockquote > p:not(:nth-child(1)),
 section.bq-purple blockquote > p:not(:nth-child(1)),
 section.bq-black blockquote > p:not(:nth-child(1)),
 section.bq-yellow blockquote > p:not(:nth-child(1)) {
+  margin: 0;
   padding: 1% 2%;
   background-color: var(--color-callout-body);
 }

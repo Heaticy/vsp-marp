@@ -6,10 +6,25 @@
   "scripts": {
     "build:themes": "node --import tsx scripts/build-themes.ts",
     "render": "node --import tsx scripts/render.ts",
+    "audit:slides": "node --import tsx skills/vsp-marp/skills/audit/scripts/audit.ts",
+    "screenshot:slides": "node --import tsx skills/vsp-marp/skills/audit/scripts/screenshot-and-review.ts",
     "sync:cos": "node --import tsx scripts/sync-cos.ts",
     "prepare": "node --import tsx scripts/build-themes.ts",
     "build": "node --import tsx scripts/build-themes.ts",
-    "check": "node --import tsx scripts/build-themes.ts"
+    "audit:themes": "node --import tsx scripts/audit-themes.ts",
+    "check": "node --import tsx scripts/check.ts"
+  },
+  "keywords": [
+    "pi-package",
+    "agent-skills",
+    "codex-plugin",
+    "marp",
+    "slides"
+  ],
+  "pi": {
+    "skills": [
+      "./skills"
+    ]
   },
   "exports": {
     "./marp.config": "./marp.config.mjs",
@@ -17,15 +32,22 @@
     "./dist/themes/*": "./dist/themes/*"
   },
   "files": [
+    ".codex-plugin",
     "dist/themes",
+    "skills",
+    "scripts",
     "marp.config.mjs",
     "README.md"
   ],
+  "dependencies": {
+    "@marp-team/marp-cli": "^4.5.0",
+    "@marp-team/marp-core": "^4.4.0",
+    "playwright": "^1.50.0",
+    "tsx": "^4.20.5"
+  },
   "devDependencies": {
-    "@marp-team/marp-cli": "^4.3.1",
     "cos-nodejs-sdk-v5": "^2.14.7",
     "sass": "^1.99.0",
-    "sharp": "^0.34.4",
-    "tsx": "^4.20.5"
+    "sharp": "^0.34.4"
   }
 }

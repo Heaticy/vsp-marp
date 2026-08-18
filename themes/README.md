@@ -22,7 +22,7 @@ Shared primitives live in `_base/`.
 
 1. Create `themes/palettes/<name>.scss`
 2. `@use "../_base/palette-contract" as contract;`
-3. Override all 14 required contract variables
+3. Override all required variables documented in `themes/_base/palette-contract.scss` (currently 40)
 4. Optionally override font-family variables or derived callout aliases
 5. Build and visually check the output
 
@@ -35,7 +35,19 @@ Shared primitives live in `_base/`.
 5. Run `node --import tsx scripts/build-themes.ts`
 6. Add or repoint a template deck if needed
 
+## Encapsulation Rules
+
+- Each preset compiles to one independent CSS file with exactly one matching `/* @theme <name> */` header.
+- A preset composes `_base/index`, exactly one palette, and exactly one layout. Theme-specific values must not leak into shared layout modules.
+- Layouts consume `var(--color-*)` and font/token variables instead of importing a concrete palette.
+- Built CSS must not contain machine-local paths, unresolved Sass syntax, or undefined custom-property references.
+- `:root`, reset selectors, and bare content selectors are intentional inside a Marp theme stylesheet; distribution isolation is provided by separate preset CSS files and Marp's selected theme.
+- `skills/vsp-marp/references/templates` and `skills/vsp-marp/references/themes` are checked byte-for-byte against the canonical root templates and built CSS.
+
 ## Workflow
 
+- `npm run check`: rebuild all themes and enforce preset, palette, CSS-variable, local-path, canvas, default-report, and Skill snapshot invariants
+- `npm run audit:themes`: run the same theme invariants against existing build output without rebuilding
 - `node --import tsx scripts/build-themes.ts`: compile themes into `dist/themes/`
 - `node --import tsx scripts/render.ts templates/tutorial-red.md -o /tmp/tutorial-red.html`: render with remote COS theme
+- `node --import tsx scripts/render.ts templates/tutorial-red.md --theme-file dist/themes/tutorial-red.css -o /tmp/tutorial-red-local.html`: render with a local built theme for pre-release review

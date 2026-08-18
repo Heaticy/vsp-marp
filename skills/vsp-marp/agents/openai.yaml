@@ -1,0 +1,4 @@
+interface:
+  display_name: VSP-Marp
+  short_description: 'Plan, render, audit, and polish Marp slides'
+  default_prompt: 'Use $vsp-marp to plan, generate, render, audit, and polish a Marp slide deck from my materials.'

@@ -1,6 +1,44 @@
 # VSP-Marp
 
-一个用于生成 Marp PPT 的主题仓库，默认通过腾讯云 COS 提供远程主题和素材。
+一个包含 `vsp-marp` Agent Skill 的 Marp 主题、模板和自动化仓库，默认通过腾讯云 COS 提供远程主题和素材。
+
+## VSP-Marp Skill
+
+仓库内置的 Skill 位于 `skills/vsp-marp/`，遵循通用 Agent Skills 格式，覆盖 PPT 规划、素材检查、Marp Markdown 生成、HTML/PDF 渲染、视觉审计、回修和导出。Skill 与本仓库共用 `templates/`、`themes/`、`practice/` 和 `scripts/render.ts`，无需再安装单独的 slides 仓库。
+
+### 通用安装
+
+支持 Agent Skills 的工具可直接加载 `skills/vsp-marp/`，或将该目录安装到工具自己的 Skills 目录。使用时指定 `vsp-marp`，也可以直接描述“用 VSP-Marp 生成/渲染/审计 PPT”。主 Skill 会按需读取相对路径下的子 Skill，因此不依赖某个 Agent 是否支持嵌套 Skill 自动发现。
+
+需要运行本地工具链和截图审计时安装依赖：
+
+```bash
+pnpm install
+pnpm exec playwright install chromium
+```
+
+### Codex
+
+本仓库根目录包含 `.codex-plugin/plugin.json`，可作为 Codex 插件仓库加载。只使用 Skill 目录时，建议从已克隆的仓库建立链接，以保留对仓库 CLI、主题和模板的访问：
+
+```bash
+mkdir -p "${CODEX_HOME:-$HOME/.codex}/skills"
+ln -s "$(pwd)/skills/vsp-marp" "${CODEX_HOME:-$HOME/.codex}/skills/vsp-marp"
+```
+
+之后通过 `$vsp-marp` 或自然语言触发；Codex 界面元数据位于 `skills/vsp-marp/agents/openai.yaml`。
+
+### Pi
+
+Pi 可以把整个仓库作为本地 package 安装：
+
+```bash
+pi install .
+```
+
+重新进入会话后使用 `/skill:vsp-marp`。Pi 还能递归发现 `/skill:vsp-marp-plan`、`/skill:vsp-marp-render` 和 `/skill:vsp-marp-audit` 等带前缀的子 Skill。
+
+完整路由和触发说明见 [`skills/vsp-marp/SKILL.md`](skills/vsp-marp/SKILL.md)。
 
 ## 用户说明（必看）
 
@@ -142,8 +180,8 @@ npm install --ignore-scripts
 渲染命令：
 
 ```bash
-node --import tsx scripts/render.ts <input.md> [-o output.html]
-node --import tsx scripts/render.ts <input.md> --pdf -o output.pdf
+node --import tsx scripts/render.ts <input.md> [--theme <name> | --theme-file <css>] [--allow-local-files] [-o output.html]
+node --import tsx scripts/render.ts <input.md> [--theme <name> | --theme-file <css>] [--allow-local-files] --pdf -o output.pdf
 ```
 
 常见示例：
@@ -152,11 +190,14 @@ node --import tsx scripts/render.ts <input.md> --pdf -o output.pdf
 node --import tsx scripts/render.ts templates/tutorial-red.md -o /tmp/tutorial-red.html
 node --import tsx scripts/render.ts templates/tutorial-red.md --pdf -o /tmp/tutorial-red.pdf
 node --import tsx scripts/render.ts templates/report.md --theme report -o /tmp/report.html
+node --import tsx scripts/render.ts templates/report.md --theme-file dist/themes/report.css -o /tmp/report-local.html
 node --import tsx scripts/render.ts practice/Tutorial-CS100-r13/CS100-r13.md --pdf -o /tmp/CS100-r13.pdf
 ```
 
 说明：
 
+- `--theme-file` 使用本地 CSS，并与 `--theme` 互斥；修改主题后的发布前检查应使用该选项
+- `--allow-local-files` 允许可信 Markdown 读取本地图片等资源；默认关闭，不要对外部或不可信文稿开启
 - 不加 `--pdf` 时，默认输出 `html`
 - 加 `--pdf` 时，输出 `pdf`
 - `--theme` 可以覆盖 Markdown 头部里的 `theme`

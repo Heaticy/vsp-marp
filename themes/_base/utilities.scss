@@ -228,25 +228,6 @@ section.cols2_ul_ci li {
   @include unordered-marker(true);
 }
 
-section:is(.bq, .bq-blue, .bq-red, .bq-green, .bq-purple, .bq-black, .bq-yellow) blockquote {
-  overflow: hidden;
-  padding: 0;
-}
-
-section:is(.bq, .bq-blue, .bq-red, .bq-green, .bq-purple, .bq-black, .bq-yellow) blockquote > p {
-  margin: 0;
-}
-
-section:is(.bq, .bq-blue, .bq-red, .bq-green, .bq-purple, .bq-black, .bq-yellow) blockquote > p:first-child {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-}
-
-section:is(.bq, .bq-blue, .bq-red, .bq-green, .bq-purple, .bq-black, .bq-yellow) blockquote > p:not(:first-child) {
-  padding: 1% 2%;
-}
-
 section :is(h1, h2, h3, h4, h5, h6) code {
   color: inherit;
   font-size: inherit;

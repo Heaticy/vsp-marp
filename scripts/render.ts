@@ -1,5 +1,6 @@
 import path from "node:path";
 import { promises as fs } from "node:fs";
+import { pathToFileURL } from "node:url";
 
 import { extractFrontmatterTheme } from "./lib/theme-utils.ts";
 import { marpCommand, repoRoot, runCommand } from "./lib/runtime.ts";
@@ -9,7 +10,9 @@ interface ParsedRenderArgs {
   inputFile: string;
   outputFile?: string;
   pdf: boolean;
+  allowLocalFiles: boolean;
   theme: string | null;
+  themeFile: string | null;
 }
 
 async function main() {
@@ -18,7 +21,9 @@ async function main() {
   const outputFile = parsed.outputFile ? path.resolve(process.cwd(), parsed.outputFile) : undefined;
   const source = await fs.readFile(inputFile, "utf8");
   const theme = parsed.theme ?? extractFrontmatterTheme(source) ?? DEFAULT_THEME;
-  const themeFile = await cacheRemoteTheme(theme);
+  const themeFile = parsed.themeFile
+    ? await resolveLocalThemeFile(parsed.themeFile)
+    : await cacheRemoteTheme(theme);
   const marp = marpCommand();
 
   runCommand(
@@ -28,17 +33,25 @@ async function main() {
         inputFile,
         outputFile,
         pdf: parsed.pdf,
+        allowLocalFiles: parsed.allowLocalFiles,
         themeFile,
       }),
     ),
   );
+
+  if (parsed.allowLocalFiles && !parsed.pdf) {
+    const htmlFile = outputFile ?? replaceExtension(inputFile, ".html");
+    await injectLocalAssetBase(htmlFile, path.dirname(inputFile));
+  }
 }
 
 function parseRenderArgs(argv: string[]): ParsedRenderArgs {
   let inputFile: string | undefined;
   let outputFile: string | undefined;
   let pdf = false;
+  let allowLocalFiles = false;
   let theme: string | null = null;
+  let themeFile: string | null = null;
 
   for (let index = 0; index < argv.length; index += 1) {
     const arg = argv[index];
@@ -47,8 +60,14 @@ function parseRenderArgs(argv: string[]): ParsedRenderArgs {
       case "--pdf":
         pdf = true;
         break;
+      case "--allow-local-files":
+        allowLocalFiles = true;
+        break;
       case "--theme":
         theme = argv[++index] ?? missingValue(arg);
+        break;
+      case "--theme-file":
+        themeFile = argv[++index] ?? missingValue(arg);
         break;
       case "-o":
       case "--output":
@@ -69,22 +88,31 @@ function parseRenderArgs(argv: string[]): ParsedRenderArgs {
   }
 
   if (!inputFile) {
-    throw new Error("Usage: pnpm render <input.md> [--theme <name>] [--pdf] [-o output.html]");
+    throw new Error("Usage: pnpm render <input.md> [--theme <name> | --theme-file <css>] [--allow-local-files] [--pdf] [-o output.html]");
   }
 
-  return { inputFile, outputFile, pdf, theme };
+  if (theme && themeFile) {
+    throw new Error("--theme and --theme-file cannot be used together");
+  }
+
+  return { inputFile, outputFile, pdf, allowLocalFiles, theme, themeFile };
 }
 
 function buildRenderArgs(options: {
   inputFile: string;
   outputFile?: string;
   pdf: boolean;
+  allowLocalFiles: boolean;
   themeFile: string;
 }): string[] {
   const args = ["--theme", options.themeFile];
 
   if (options.pdf) {
     args.push("--pdf");
+  }
+
+  if (options.allowLocalFiles) {
+    args.push("--allow-local-files");
   }
 
   args.push(options.inputFile);
@@ -94,6 +122,30 @@ function buildRenderArgs(options: {
   }
 
   return args;
+}
+
+async function injectLocalAssetBase(htmlFile: string, inputDir: string): Promise<void> {
+  const source = await fs.readFile(htmlFile, "utf8");
+  if (source.includes("<base ")) {
+    return;
+  }
+
+  const baseUrl = pathToFileURL(`${inputDir}${path.sep}`).href;
+  const withBase = source.replace("<head>", `<head>\n<base href="${baseUrl}">`);
+  if (withBase === source) {
+    throw new Error(`Cannot inject local asset base into HTML without <head>: ${htmlFile}`);
+  }
+  await fs.writeFile(htmlFile, withBase, "utf8");
+}
+
+function replaceExtension(file: string, extension: string): string {
+  return file.replace(/\.[^.]+$/, extension);
+}
+
+async function resolveLocalThemeFile(themeFile: string): Promise<string> {
+  const resolved = path.resolve(process.cwd(), themeFile);
+  await fs.access(resolved);
+  return resolved;
 }
 
 async function cacheRemoteTheme(themeName: string): Promise<string> {

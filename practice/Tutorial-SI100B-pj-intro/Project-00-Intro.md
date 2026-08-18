@@ -50,13 +50,13 @@ footer: \ *SI100B EE Part* *Project Introduction* *Dec.5 2025*
 ---
 ## Background——Compile
 
-![alt text](img/image.png)
+![h:500px #c](img/image.png)
 
 ---
 
 ## Background——Assembly
 
-![alt text](img/image-1.png)
+![h:500px #c](img/image-1.png)
 
 ---
 
