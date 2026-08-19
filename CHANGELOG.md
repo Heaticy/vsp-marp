@@ -1,5 +1,14 @@
 # CHANGELOG
 
+## v0.2.0 - Agent Skill and Theme Platform
+
+- integrated the cross-agent `vsp-marp` Skill for Agent Skills, Codex, and Pi
+- upgraded to Marp CLI 4.5 and Marp Core 4.4
+- changed the default `report` theme to red and made template callouts follow semantic theme colors
+- added local-theme rendering, trusted local asset support, theme encapsulation audits, and snapshot checks
+- validated all standard templates and practice decks across 305 rendered PDF pages
+- completed VS Code configuration for all seven published COS themes
+
 ## v0.1.1 - Report Variants
 
 - added `report-red` and `report-nailong` report theme variants

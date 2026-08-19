@@ -1,6 +1,6 @@
 {
   "name": "vsp-marp",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "VSP-Marp skill bundle for planning, generating, rendering, auditing, polishing, and exporting Marp slide decks.",
   "author": {
     "name": "VSP"
