@@ -84,6 +84,8 @@ https://heaticy-1310163554.cos.ap-shanghai.myqcloud.com/vsp-marp/themes/tutorial
 https://heaticy-1310163554.cos.ap-shanghai.myqcloud.com/vsp-marp/themes/tutorial-red-shtu.css
 https://heaticy-1310163554.cos.ap-shanghai.myqcloud.com/vsp-marp/themes/tutorial-purple.css
 https://heaticy-1310163554.cos.ap-shanghai.myqcloud.com/vsp-marp/themes/report.css
+https://heaticy-1310163554.cos.ap-shanghai.myqcloud.com/vsp-marp/themes/report-red.css
+https://heaticy-1310163554.cos.ap-shanghai.myqcloud.com/vsp-marp/themes/report-nailong.css
 https://heaticy-1310163554.cos.ap-shanghai.myqcloud.com/vsp-marp/themes/tutorial-nailong.css
 ```
 
@@ -121,7 +123,7 @@ header: \ *CS100* *Tutorial 15* *Fall 2025*
 | 字段 | 作用 | 备注 |
 | --- | --- | --- |
 | `marp: true` | 启用 Marp | 模板必须保留。 |
-| `theme` | 指定主题 | 当前常用值是 `tutorial-red`、`tutorial-red-shtu`、`tutorial-purple`、`report` 和 `tutorial-nailong`。 |
+| `theme` | 指定主题 | 可用值是 `tutorial-red`、`tutorial-red-shtu`、`tutorial-purple`、`tutorial-nailong`、`report`、`report-red` 和 `report-nailong`。 |
 | `size` | 指定画幅 | 主题支持 `16:9` 和 `4:3`，模板默认用 `16:9`。 |
 | `paginate` | 是否显示页码 | 可在单页用 `_paginate: ""` 关闭。 |
 | `math` | 数学公式渲染 | `practice/Tutorial-CS100-r13/CS100-r13.md` 使用 `math: mathjax`。 |

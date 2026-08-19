@@ -10,6 +10,7 @@ const VARIABLE_DEFINITION_RE = /(--[a-zA-Z0-9-]+)\s*:/g;
 const VARIABLE_USAGE_RE = /var\((--[a-zA-Z0-9-]+)/g;
 const MACHINE_PATH_RE = /(?:file:\/\/|\/home\/|\/Users\/|[A-Za-z]:\\)/;
 const UNRESOLVED_SASS_RE = /(?:#\{|\$[a-zA-Z_-][a-zA-Z0-9_-]*)/;
+const THEME_BASE_URL = "https://heaticy-1310163554.cos.ap-shanghai.myqcloud.com/vsp-marp/themes";
 
 export async function auditThemes() {
   const presetDir = path.join(repoRoot, "themes", "presets");
@@ -28,6 +29,15 @@ export async function auditThemes() {
   const builtThemes = distFiles.map(file => path.basename(file, ".css")).sort();
 
   assertEqualLists(builtThemes, expectedThemes, "Built CSS files must match theme presets");
+
+  const vscodeSettingsFile = path.join(repoRoot, ".vscode", "settings.json");
+  const vscodeSettings = JSON.parse(await fs.readFile(vscodeSettingsFile, "utf8"));
+  assert(vscodeSettings["markdown.marp.html"] === "all", `${relative(vscodeSettingsFile)} must enable all HTML used by the templates`);
+  const configuredThemeUrls = vscodeSettings["markdown.marp.themes"];
+  assert(Array.isArray(configuredThemeUrls), `${relative(vscodeSettingsFile)} must define markdown.marp.themes as an array`);
+  assert(new Set(configuredThemeUrls).size === configuredThemeUrls.length, `${relative(vscodeSettingsFile)} contains duplicate theme URLs`);
+  const expectedThemeUrls = expectedThemes.map(theme => `${THEME_BASE_URL}/${theme}.css`).sort();
+  assertEqualLists([...configuredThemeUrls].sort(), expectedThemeUrls, "VS Code theme URLs must match theme presets");
 
   const contractSource = await fs.readFile(path.join(repoRoot, "themes", "_base", "palette-contract.scss"), "utf8");
   const requiredPaletteVariables = new Set(
