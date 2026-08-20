@@ -1,7 +1,7 @@
 ---
 marp: true
 math: mathjax
-theme: report
+theme: report-red
 size: 16:9
 paginate: true
 ---

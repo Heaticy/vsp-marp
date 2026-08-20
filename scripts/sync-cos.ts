@@ -26,6 +26,7 @@ const client = new COS({
 async function main() {
   await buildThemes();
   await configureBucketCors();
+  await deleteObject(`${prefix}/themes/report.css`);
 
   const uploads = [
     {
@@ -52,6 +53,27 @@ async function main() {
       console.log(`[sync-cos] ${toPosix(path.relative(repoRoot, file))} -> ${key}`);
     }
   }
+}
+
+function deleteObject(key: string) {
+  return new Promise<void>((resolve, reject) => {
+    client.deleteObject(
+      {
+        Bucket: bucket,
+        Region: region,
+        Key: key,
+      },
+      (error) => {
+        if (error) {
+          reject(error);
+          return;
+        }
+
+        console.log(`[sync-cos] removed obsolete ${key}`);
+        resolve();
+      },
+    );
+  });
 }
 
 function putObject(

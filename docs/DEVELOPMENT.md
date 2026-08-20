@@ -54,7 +54,7 @@ node --import tsx scripts/render.ts <input.md> [--theme <name> | --theme-file <c
 
 ```bash
 node --import tsx scripts/render.ts templates/tutorial-red.md -o /tmp/tutorial-red.html
-node --import tsx scripts/render.ts templates/report.md --theme report -o /tmp/report.html
+node --import tsx scripts/render.ts templates/report-red.md --theme report-red -o /tmp/report-red.html
 node --import tsx scripts/render.ts templates/tutorial-red.md --pdf -o /tmp/tutorial-red.pdf
 ```
 
@@ -83,7 +83,6 @@ node --import tsx scripts/render.ts templates/tutorial-red.md --pdf -o /tmp/tuto
 https://heaticy-1310163554.cos.ap-shanghai.myqcloud.com/vsp-marp/themes/tutorial-red.css
 https://heaticy-1310163554.cos.ap-shanghai.myqcloud.com/vsp-marp/themes/tutorial-red-shtu.css
 https://heaticy-1310163554.cos.ap-shanghai.myqcloud.com/vsp-marp/themes/tutorial-purple.css
-https://heaticy-1310163554.cos.ap-shanghai.myqcloud.com/vsp-marp/themes/report.css
 https://heaticy-1310163554.cos.ap-shanghai.myqcloud.com/vsp-marp/themes/report-red.css
 https://heaticy-1310163554.cos.ap-shanghai.myqcloud.com/vsp-marp/themes/report-nailong.css
 https://heaticy-1310163554.cos.ap-shanghai.myqcloud.com/vsp-marp/themes/tutorial-nailong.css
@@ -123,7 +122,7 @@ header: \ *CS100* *Tutorial 15* *Fall 2025*
 | 字段 | 作用 | 备注 |
 | --- | --- | --- |
 | `marp: true` | 启用 Marp | 模板必须保留。 |
-| `theme` | 指定主题 | 可用值是 `tutorial-red`、`tutorial-red-shtu`、`tutorial-purple`、`tutorial-nailong`、`report`、`report-red` 和 `report-nailong`。 |
+| `theme` | 指定主题 | 可用值是 `tutorial-red`、`tutorial-red-shtu`、`tutorial-purple`、`tutorial-nailong`、`report-red` 和 `report-nailong`。 |
 | `size` | 指定画幅 | 主题支持 `16:9` 和 `4:3`，模板默认用 `16:9`。 |
 | `paginate` | 是否显示页码 | 可在单页用 `_paginate: ""` 关闭。 |
 | `math` | 数学公式渲染 | `practice/Tutorial-CS100-r13/CS100-r13.md` 使用 `math: mathjax`。 |
@@ -171,9 +170,9 @@ Marp 的 HTML 注释指令有作用域区别：
 
 | class | 用途 | 常见模板 |
 | --- | --- | --- |
-| `cover_a` / `cover_b` / `cover_c` / `cover_d` / `cover_e` | 封面版式 | `tutorial-red.md` 使用 `cover_e`，`report.md` 使用 `cover_b`。 |
-| `toc_a` | 卡片式目录页 | `tutorial-red.md`、`tutorial-nailong.md`、`report.md`；practice 示例也可使用。 |
-| `toc_b` | 左侧色带目录页 | `tutorial-red.md`、`report.md`。 |
+| `cover_a` / `cover_b` / `cover_c` / `cover_d` / `cover_e` | 封面版式 | `tutorial-red.md` 使用 `cover_e`，`report-red.md` 使用 `cover_b`。 |
+| `toc_a` | 卡片式目录页 | `tutorial-red.md`、`tutorial-nailong.md`、`report-red.md`；practice 示例也可使用。 |
+| `toc_b` | 左侧色带目录页 | `tutorial-red.md`、`report-red.md`。 |
 | `trans` | 章节过渡页 | 标题居中，使用主题主色背景；展示模板和 practice 示例都可使用。 |
 | `fixedtitleA` | 固定标题正文页 | 标题保持普通样式，正文从标题下方开始。 |
 | `fixedtitleB` | 标签式固定标题正文页 | 标题变成强调色标签，正文放在 `<div class="div">` 里。 |
@@ -383,7 +382,7 @@ CI 会在 push、merge request、tag 和网页手动触发时创建流水线。�
 
 流水线包含：
 
-- `check`: 运行 `npm run check`，构建主题 CSS，并审计 preset/palette 结构、CSS 变量闭合、本机路径、画布尺寸、默认 report 红色和 Skill 快照一致性。
+- `check`: 运行 `npm run check`，构建主题 CSS，并审计 preset/palette 结构、CSS 变量闭合、本机路径、画布尺寸、`report-red` 主色和 Skill 快照一致性。
 - `build`: 运行 `npm run build`，并保存 `dist/` 作为一周有效的 artifact。
 
 ## 发布到 COS

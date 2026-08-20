@@ -147,7 +147,8 @@ Markdown 文件放在这个工作区里的任意位置都可以。
 | `templates/tutorial-red-shtu.md` | `tutorial-red-shtu` | 上科大教学、课程展示 | 基于 `tutorial-red` 的上科大版本，默认带上科大封面 logo、名称和正文背景图。 |
 | `templates/tutorial-purple.md` | `tutorial-purple` | 教学、习题课、tutorial slides | 紫色教学展示模板，版式与 `tutorial-red` 保持一致，只替换主题色。 |
 | `templates/tutorial-nailong.md` | `tutorial-nailong` | 奶龙风格教学、组会、轻量汇报 | 奶龙黄教学展示模板，保持 tutorial 标准结构，只在封面、过渡页和主题配色上强化视觉风格。 |
-| `templates/report.md` | `report` | 汇报、项目展示、阶段报告 | 报告展示模板，结构和 tutorial 模板接近，但封面、标题层级和配色更适合报告场景。 |
+| `templates/report-red.md` | `report-red` | 汇报、项目展示、阶段报告 | 默认报告模板，使用红色报告主题。 |
+| `templates/report-nailong.md` | `report-nailong` | 轻量、活泼的报告 | Nailong 报告模板。 |
 
 ### Practice 示例
 
@@ -157,9 +158,9 @@ Markdown 文件放在这个工作区里的任意位置都可以。
 | --- | --- | --- | --- |
 | `practice/Tutorial-CS100-r13/CS100-r13.md` | `tutorial-red-shtu` | 课程 practice / recitation | CS100 Makefile practice 示例，包含 `math: mathjax`、分页、课程 header、完整目录和多页课程内容。适合参考内容型 practice 怎么组织章节、代码块和说明文字。 |
 | `practice/Tutorial-SI100B-pj-intro/Project-00-Intro.md` | `tutorial-red-shtu` | 课程项目介绍 | SI100B Project 00 介绍示例，适合参考课程型 tutorial 的内容组织和图片排版。 |
-| `practice/Report-4DGS/Report-4DGS.md` | `report` | 论文汇报 / paper report | 4DGS 论文汇报示例，适合参考 report 主题下的章节组织、图片页和尾页。 |
-| `practice/Report-4DSloMo/Report-4DSloMo.md` | `report` | 论文汇报 / paper report | 4DSloMo 与 LoRA 学习报告示例，适合参考 report 主题迁移旧文稿。 |
-| `practice/Report-MaskGaussian/Report-MaskGaussian.md` | `report` | 论文汇报 / paper report | MaskGaussian 汇报示例，适合参考公式、双栏文本和 report 封面结构。 |
+| `practice/Report-4DGS/Report-4DGS.md` | `report-red` | 论文汇报 / paper report | 4DGS 论文汇报示例，适合参考红色报告主题下的章节组织、图片页和尾页。 |
+| `practice/Report-4DSloMo/Report-4DSloMo.md` | `report-red` | 论文汇报 / paper report | 4DSloMo 与 LoRA 学习报告示例，适合参考报告文稿迁移。 |
+| `practice/Report-MaskGaussian/Report-MaskGaussian.md` | `report-red` | 论文汇报 / paper report | MaskGaussian 汇报示例，适合参考公式、双栏文本和报告封面结构。 |
 
 现成工作区配置见 [.vscode/settings.json](/mnt/nas-home/vsp-marp/.vscode/settings.json:1)。
 
@@ -189,8 +190,8 @@ node --import tsx scripts/render.ts <input.md> [--theme <name> | --theme-file <c
 ```bash
 node --import tsx scripts/render.ts templates/tutorial-red.md -o /tmp/tutorial-red.html
 node --import tsx scripts/render.ts templates/tutorial-red.md --pdf -o /tmp/tutorial-red.pdf
-node --import tsx scripts/render.ts templates/report.md --theme report -o /tmp/report.html
-node --import tsx scripts/render.ts templates/report.md --theme-file dist/themes/report.css -o /tmp/report-local.html
+node --import tsx scripts/render.ts templates/report-red.md --theme report-red -o /tmp/report-red.html
+node --import tsx scripts/render.ts templates/report-red.md --theme-file dist/themes/report-red.css -o /tmp/report-red-local.html
 node --import tsx scripts/render.ts practice/Tutorial-CS100-r13/CS100-r13.md --pdf -o /tmp/CS100-r13.pdf
 ```
 

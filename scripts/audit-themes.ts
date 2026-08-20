@@ -98,10 +98,8 @@ export async function auditThemes() {
     assert(source.includes("height: 720px;"), `${relative(distFile)} does not preserve the canvas height`);
   }
 
-  const reportCss = await fs.readFile(path.join(distDir, "report.css"), "utf8");
   const reportRedCss = await fs.readFile(path.join(distDir, "report-red.css"), "utf8");
-  assert(stripThemeHeader(reportCss) === stripThemeHeader(reportRedCss), "report and report-red must share the same red theme body");
-  assert(lastVariableValue(reportCss, "--color-primary") === "#ae3a44", "report must use the red #ae3a44 primary color");
+  assert(lastVariableValue(reportRedCss, "--color-primary") === "#ae3a44", "report-red must use the red #ae3a44 primary color");
 
   if (await exists(skillDir)) {
     await assertDirectorySnapshots(path.join(repoRoot, "templates"), path.join(skillDir, "templates"), ".md");
@@ -127,10 +125,6 @@ function collectMatches(source: string, pattern: RegExp): Set<string> {
 
 function countMatches(source: string, pattern: RegExp): number {
   return [...source.matchAll(pattern)].length;
-}
-
-function stripThemeHeader(source: string): string {
-  return source.replace(THEME_HEADER_RE, "");
 }
 
 function lastVariableValue(source: string, variable: string): string | undefined {

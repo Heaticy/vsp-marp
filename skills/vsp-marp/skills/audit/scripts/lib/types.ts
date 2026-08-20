@@ -1,8 +1,7 @@
 // VSP Marp type definitions
 
 export type ThemeName
-  = | 'report'
-    | 'report-red'
+  = | 'report-red'
     | 'report-nailong'
     | 'tutorial-red'
     | 'tutorial-red-shtu'

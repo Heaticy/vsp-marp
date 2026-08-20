@@ -46,7 +46,7 @@ Shared primitives live in `_base/`.
 
 ## Workflow
 
-- `npm run check`: rebuild all themes and enforce preset, palette, CSS-variable, local-path, canvas, default-report, and Skill snapshot invariants
+- `npm run check`: rebuild all themes and enforce preset, palette, CSS-variable, local-path, canvas, `report-red`, and Skill snapshot invariants
 - `npm run audit:themes`: run the same theme invariants against existing build output without rebuilding
 - `node --import tsx scripts/build-themes.ts`: compile themes into `dist/themes/`
 - `node --import tsx scripts/render.ts templates/tutorial-red.md -o /tmp/tutorial-red.html`: render with remote COS theme

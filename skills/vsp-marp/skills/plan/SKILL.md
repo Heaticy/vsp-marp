@@ -19,7 +19,7 @@ description: VSP-Marp 规划子技能。用于在生成 PPT 前分析输入材�
 1. 检查材料路径和可读性；若缺失关键路径，先询问。
 2. 读取材料目录、标题层级、图片数量、公式/代码密度。
 3. 按场景选择候选主题：
-   - 论文/项目：优先 `report-red`，需要中性报告风格时用 `report`，需要轻量活泼风格时用 `report-nailong`
+   - 论文/项目：优先 `report-red`，需要轻量活泼风格时用 `report-nailong`
    - 教学/习题：`tutorial-red`、`tutorial-red-shtu`、`tutorial-purple`
    - 轻量展示：`tutorial-nailong`
 4. 规划页面结构：封面、双目录、章节过渡、正文页、总结、尾页。

@@ -1,6 +1,6 @@
 ---
 marp: true
-theme: report
+theme: report-red
 size: 16:9
 paginate: true
 footer:
